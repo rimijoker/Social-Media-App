@@ -30,7 +30,7 @@ module.exports = {
                 throw new UserInputError("Validation error", { errors });
             }
 
-            const user = await user.findOne({ username });
+            const user = await User.findOne({ username });
 
             if (!user) {
                 errors.general = "User not found";
