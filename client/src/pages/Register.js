@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 
-function Register() {
+function Register(props) {
     const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         username: "",
@@ -17,12 +17,11 @@ function Register() {
     };
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(proxy, result) {
-            console.log(result);
+        update(_, result) {
+            props.history.push("/");
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.errors);
-            // setErrors(err.graphQLErrors[0].extensions.exceptions.errors);
         },
         variables: values,
     });
