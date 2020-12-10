@@ -19,7 +19,7 @@ function Register(props) {
             props.history.push("/");
         },
         onError(err) {
-            setErrors(err.graphQLErrors[0].extensions.errors);
+            setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         variables: values,
     });
