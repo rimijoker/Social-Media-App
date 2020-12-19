@@ -4,7 +4,7 @@ const Post = require("../../models/Post");
 const checkAuth = require("../../util/check-auth");
 
 module.exports = {
-    Mutations: {
+    Mutation: {
         async createComment(_, { postId, body }, context) {
             const { username } = checkAuth(context);
             if (body.trim() === "") {
