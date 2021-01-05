@@ -34,7 +34,7 @@ module.exports = {
             }
 
             const newPost = new Post({
-                // body,
+                body,
                 user: user.id,
                 username: user.username,
                 createdAt: new Date().toISOString(),
