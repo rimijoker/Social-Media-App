@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 
 import { useForm } from "../utils/hooks";
+import { FETCH_POSTS_QUERY } from "../utils/graphql";
 
 function PostForm() {
     const { values, onChange, onSubmit } = useForm(createPostCallback, {
@@ -13,12 +14,11 @@ function PostForm() {
     const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
         variables: values,
         update(proxy, result) {
-            // const data = proxy.readQuery({
-            //     query: FETCH_POSTS_QUERY,
-            // });
-            // data.getPosts = [result.data.createPost, ...data.getPosts];
-            // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
-            console.log(result);
+            const data = proxy.readQuery({ query: FETCH_POSTS_QUERY });
+            proxy.writeQuery({
+                query: FETCH_POSTS_QUERY,
+                data: { getPosts: [result.data.createPost, ...data.getPosts] },
+            });
             values.body = "";
         },
     });
@@ -34,7 +34,6 @@ function PostForm() {
                 <Form.Input
                     placeholder="Hi World!"
                     name="body"
-                    type="body"
                     onChange={onChange}
                     value={values.body}
                 />
