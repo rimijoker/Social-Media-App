@@ -16,6 +16,7 @@ import {
 import { AuthContext } from "../context/auth";
 import LikeButton from "../components/LikeButton";
 import DeleteButton from "../components/DeleteButton";
+import ButtonPopup from "../utils/Popup";
 
 function SinglePost(props) {
     const postId = props.match.params.postId;
@@ -85,20 +86,26 @@ function SinglePost(props) {
                                     user={user}
                                     post={{ id, likeCount, likes }}
                                 />
-                                <Button
-                                    as="div"
-                                    labelPosition="right"
-                                    onClick={() =>
-                                        console.log("Comment on post")
-                                    }
-                                >
-                                    <Button basic color="orange">
-                                        <Icon name="comments" />
+                                <ButtonPopup content="Comment on post">
+                                    <Button
+                                        as="div"
+                                        labelPosition="right"
+                                        onClick={() =>
+                                            console.log("Comment on post")
+                                        }
+                                    >
+                                        <Button basic color="orange">
+                                            <Icon name="comments" />
+                                        </Button>
+                                        <Label
+                                            basic
+                                            color="orange"
+                                            pointing="left"
+                                        >
+                                            {commentCount}
+                                        </Label>
                                     </Button>
-                                    <Label basic color="orange" pointing="left">
-                                        {commentCount}
-                                    </Label>
-                                </Button>
+                                </ButtonPopup>
                                 {user && user.username === username && (
                                     <DeleteButton
                                         postId={id}
