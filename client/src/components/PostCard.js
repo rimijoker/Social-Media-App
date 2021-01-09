@@ -30,9 +30,9 @@ function PostCard({
                 <LikeButton user={user} post={{ id, likes, likeCount }} />
                 <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
                     <Button color="orange" basic>
-                        <Icon name="comment" />
+                        <Icon name="comments" />
                     </Button>
-                    <Label as="a" color="orange" pointing="left">
+                    <Label as="a" color="orange" pointing="left" basic>
                         {commentCount}
                     </Label>
                 </Button>
