@@ -45,7 +45,7 @@ function Login(props) {
                     value={values.username}
                     error={errors.username ? true : false}
                     onChange={onChange}
-                ></Form.Input>
+                />
                 <Form.Input
                     label="Password"
                     placeholder="Password.."
@@ -54,7 +54,7 @@ function Login(props) {
                     value={values.password}
                     error={errors.password ? true : false}
                     onChange={onChange}
-                ></Form.Input>
+                />
                 <Button type="submit" primary>
                     Login
                 </Button>
