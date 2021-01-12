@@ -50,7 +50,6 @@ npm start
 
 👤 **rimijoker**
 
-* Website: rimijoker.github.io
 * Twitter: [@rimijoker](https://twitter.com/rimijoker)
 * Github: [@rimijoker](https://github.com/rimijoker)
 * LinkedIn: [@iamanshumansingh](https://linkedin.com/in/iamanshumansingh)
